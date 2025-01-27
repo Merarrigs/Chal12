@@ -1,0 +1,13 @@
+.aboutme-container{
+    margin: 50px;
+}
+
+.aboutme-container img{
+    height: 110px;
+    width: 90px;
+    margin: 10px;
+}
+
+.aboutme-container p{
+    padding: 30px;
+}

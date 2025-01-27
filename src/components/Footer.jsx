@@ -8,10 +8,6 @@ function Footer() {
         <Link to="https://www.linkedin.com/in/jmerarrigs/">
           <img src={linkedInIcon} />
         </Link>
-  
-        <Link to="https://twitter.com">
-          <img src={twitterIcon} />
-        </Link>
       </div>
     )
   }

@@ -5,31 +5,25 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 
-const Navigation = () => (
-  <header>
+function Navigation() {
+  return (
+    <header>
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary nav-container" bg="dark" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand>Andrea Portafolio</Navbar.Brand>
+      <Navbar.Brand>Merari's Profile</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Item>
-              <Link to="/" className="nav-link">About Me</Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Link to="Contact" className="nav-link">Contact</Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Link to="Profile" className="nav-link">Profile</Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Link to="Resume" className="nav-link">Resume</Link>
-            </Nav.Item>
-          </Nav>
+            <Nav className="me-auto">
+              <Link to="/">About Me</Link>
+              <Link to="/Contact">Contact</Link>
+              <Link to="/Profile">Profile</Link>
+              <Link to="/Resume">Resume</Link>
+            </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  </header>
-);
+    </header>
+  )
+}
 
 export default Navigation;

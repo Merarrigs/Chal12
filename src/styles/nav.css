@@ -33,11 +33,11 @@
 a{
     padding-left: 20px;
     align-content: center;
-	color: white;
+	color: rgb(128, 219, 235);
 	text-decoration: none ;
 }
 
 a:hover{
-	color:#23a6d5
+	color:#025573
 }
 

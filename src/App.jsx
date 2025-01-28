@@ -1,7 +1,7 @@
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import { Outlet } from 'react-router-dom';
-import './styles/global.css'
+import './styles/whole.css'
 
 function App() {
 

@@ -5,11 +5,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Bringing in the pages the router will use to conditionally show the appropriate views
-import App from './App';
+
 import AboutMe from './pages/AboutMe';
 import Profile from './pages/Profile';
 import Contact from './pages/Contact';
 import Resume from './pages/Resume';
+import App from './App';
 
 // Define the accessible routes, and which components respond to which URL
 const router = createBrowserRouter([

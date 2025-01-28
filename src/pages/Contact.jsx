@@ -2,78 +2,121 @@ import React, { useRef, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
-import { data } from 'react-router-dom';
 
 function Contact() {
-  const [validated, setValidated] = useState(false);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [show, setShow] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+    validated: false,
+    show: false,
+  });
 
   const formRef = useRef();
 
   const handleReset = () => {
     formRef.current.reset();
-    setValidated(false);
-    setName('');
-    setEmail('');
-    setMessage('');
+    setFormData({
+      name: '',
+      email: '',
+      message: '',
+      validated: false,
+      show: false,
+    });
   };
 
-  function handleSubmit(e){
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     e.stopPropagation();
     const form = e.currentTarget;
     if (!form.checkValidity()) {
-        setShow(false);
-    }else{
-      let dataArray = {name, email, message}
-      localStorage.setItem('formValues', JSON.stringify(dataArray));
-      setShow(true);
+      setFormData((prevData) => ({
+        ...prevData,
+        show: false,
+      }));
+    } else {
+      const { name, email, message } = formData;
+      localStorage.setItem('formValues', JSON.stringify({ name, email, message }));
+      setFormData((prevData) => ({
+        ...prevData,
+        show: true,
+      }));
     }
-    setValidated(true);
-      if (validated && name !=='' && email!=='' & message !=='') {
-        handleReset();
-      }
-  }
+    setFormData((prevData) => ({
+      ...prevData,
+      validated: true,
+    }));
+    if (formData.validated && formData.name !== '' && formData.email !== '' && formData.message !== '') {
+      handleReset();
+    }
+  };
+
   return (
     <div className='form-container'>
-      <Form noValidate ref={formRef}  validated={validated} onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicName">
-        <Form.Label>Name</Form.Label>
-        <Form.Control type="name" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)} required/>
-        <Form.Control.Feedback type="invalid">
+      <Form noValidate ref={formRef} validated={formData.validated} onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="text"
+            name="name"
+            placeholder="Enter name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          <Form.Control.Feedback type="invalid">
             Please write in a name
           </Form.Control.Feedback>
-      </Form.Group>
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
-      <Form.Control.Feedback type="invalid">
-          Please write a valid email adress
-        </Form.Control.Feedback>
-      </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            Please write a valid email address
+          </Form.Control.Feedback>
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Message</Form.Label>
-        <Form.Control as="textarea" rows={6} value={message} required onChange={(e)=> setMessage(e.target.value)}/>
-      <Form.Control.Feedback type="invalid">
-          Please write in a message
-        </Form.Control.Feedback>
-      </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Message</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={6}
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            Please write in a message
+          </Form.Control.Feedback>
+        </Form.Group>
 
-        <Button variant="primary" type="submit" onClick={() => setShow(true)}>
+        <Button variant="primary" type="submit">
           Submit
         </Button>
-    </Form>
-      {show &&   
-      <Alert key='success' variant='success' className='alert-space' onClose={() => setShow(false)} dismissible>
-          Thank you for your message!
-      </Alert>}
+      </Form>
+      {formData.show &&
+        <Alert key='success' variant='success' className='alert-space' onClose={() => setFormData((prevData) => ({ ...prevData, show: false }))} dismissible>
+          Message sent! Thank You very much!
+        </Alert>}
     </div>
-  )
+  );
 }
 
-export default Contact
+export default Contact;

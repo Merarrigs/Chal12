@@ -98,12 +98,13 @@ function Contact() {
             as="textarea"
             rows={6}
             name="message"
+            placeholder="Please type message..."
             value={formData.message}
             onChange={handleChange}
             required
           />
           <Form.Control.Feedback type="invalid">
-            Please write in a message
+            Please insert necessary message....
           </Form.Control.Feedback>
         </Form.Group>
 

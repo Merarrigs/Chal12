@@ -4,7 +4,7 @@
     justify-content: center;
     height: 20vh;
 
-    background: #19c1cd;
+    background: #11e2e2;
 	background-size: 400% 400%;
 	
 }
@@ -14,11 +14,12 @@ footer{
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	color: white;
+	color: rgb(198, 12, 12);
 }
 
 
 img{
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
+    
 }

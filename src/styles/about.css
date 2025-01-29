@@ -1,13 +1,18 @@
 .aboutme-container{
-    margin: 50px;
+    margin: 30px;
 }
 
 .aboutme-container img{
-    height: 110px;
-    width: 90px;
+    height: 230px;
+    width: 200px;
     margin: 10px;
 }
 
 .aboutme-container p{
-    padding: 30px;
+    padding: 90px;
+}
+.img{
+    width: 600px;
+    height: 600px;
+    
 }

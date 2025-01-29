@@ -3,21 +3,26 @@ import Project from '../components/Project';
 
 const projects = [
   {
-    gif: 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHg5aDA4Z2Nja3lqZnJnZWEzNDNlbTdzYWV4NnE4ZHR3ZGQzdzgxeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/139eZBmH1HTyRa/giphy.gif',
+    img: './src/assets/purple.png',
     link: 'https://github.com/Merarrigs/Vehicle_Builder',
     name: 'Vehicle Builder',
   },
   {
-    gif: 'https://media1.tenor.com/m/hA2VAmjEyd4AAAAd/we-love.gif',
+    img: './src/assets/it_computer_programming.jpg',
     link: 'https://github.com/Merarrigs/Tracker',
     name: 'Tracker',
+  },
+  {
+    img: './src/assets/circle.png',
+    link: 'https://github.com/Merarrigs/README_GEN',
+    name: 'README_GEN',
   },
 ];
 
 const Portfile = () => (
   <div className='portfile-container'>
-    {projects.map(({ link, gif, name }, index) => (
-      <Project key={index} link={link} gif={gif} name={name} />
+    {projects.map(({ link, img, name }, index) => (
+      <Project key={index} link={link} img={img} name={name} />
     ))}
   </div>
 );

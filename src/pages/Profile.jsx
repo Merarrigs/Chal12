@@ -3,7 +3,7 @@ import Project from '../components/Project';
 
 const projects = [
   {
-    img: 'https://www.istockphoto.com/photo/deep-learning-artificial-intelligence-background-gm1310293181-399750087',
+    img: './src/assets/purple.png',
     link: 'https://github.com/Merarrigs/Vehicle_Builder',
     name: 'Vehicle Builder',
   },
